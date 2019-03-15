@@ -20,7 +20,10 @@ class EventForm extends Component {
             })
         }
     }
-    componentWillReceiveProps(nextProps) {
+
+    
+
+    UNSAFE_componentWillReceiveProps(nextProps) {
         // console.log('Current: ', this.props.selectedEvent);
         // console.log('Next: ', nextProps.selectedEvent);
         if(nextProps.selectedEvent !== this.props.selectedEvent) {
@@ -33,9 +36,15 @@ class EventForm extends Component {
     onFormSubmit = (evt) => {
         evt.preventDefault();
         //console.log(this.refs.title.value);
-        console.log(this.state.event);
-        this.props.createEvent(this.state.event); 
+        //console.log(this.state.event);
+        if(this.state.event.id) {
+            this.props.updateEvent(this.state.event);
+        }
+        else{
+            this.props.createEvent(this.state.event); 
+        }
     } 
+
     onInputChange = (evt) => {
         const newEvent = this.state.event;
         newEvent[evt.target.name] = evt.target.value;
