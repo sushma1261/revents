@@ -19,7 +19,7 @@ class App extends Component {
           <Route exact path = '/'  component={HomePage}/>
         </Switch>
         <Route path = "/(.+)" render = {() => (
-          <div>
+          <div className = "App">
             <NavBar />
             <Container className = "main">
               {/* <EventDashboard /> */}
@@ -29,14 +29,12 @@ class App extends Component {
                 <Route path = '/people' component={PeopleDashboard}/>
                 <Route path = '/profile/:id' component={UserDetailedPage}/>
                 <Route path = '/settings' component={SettingsDashboard}/>
-                <Route path = '/createEvent' component={EventForm }/>
+                <Route path = '/createEvent' component={EventForm}/>
               </Switch>
             </Container>
       </div>
         )}/>
-        
       </div>
-      
       );
   }
 }
